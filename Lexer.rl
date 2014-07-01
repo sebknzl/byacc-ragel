@@ -19,7 +19,7 @@ using namespace std;
 	
 	ident = alpha ( alnum | '_' )*;
 	
-	chartoks = [\-\+\*\(\)/!%^&~,];
+	chartoks = [\-\+\*\(\)/,];
 	
 	main := |*
 		number    => { ret = NUMBER; yylval->v = atoi( TOK().c_str() ); fbreak; };
