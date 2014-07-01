@@ -55,9 +55,6 @@ int Lexer::lex( YYSTYPE* yylval ) {
 
 	using namespace Expr;
 
-#define RESV(R,V) ret=R; yylval = V;
-#define RESCF(R,CF) ret=R; yylval->cf=CF;
-
 	yylval->v = .0f;
 
 %% write exec;

@@ -2,7 +2,6 @@
  * Licensed under the MIT License, see LICENSE.
  */
 #include <stdio.h>
-#include <string.h>
 #include <cmath>
 #include "Expr.h"
 
