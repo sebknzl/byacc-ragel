@@ -44,8 +44,7 @@ exp:  exp '+' exp            { $$ = $1 + $3; }
 	| '-' exp %prec UMINUS   { $$ = -$2; }
 	| '+' exp %prec UPLUS    { $$ = $2; }
 	| '(' exp ')'            { $$ = $2; }
-	| IDENT                  { ctx->functionArgs.clear(); }
-	         '(' explist ')' { if( !ctx->fcb || !ctx->fcb( $1, ctx->functionArgs, $$ ) ) { SETERROR( std::string( "Error calling function " ) + $1 ); YYERROR; }; }
+	| IDENT '(' explist ')'  { bool err = !ctx->fcb || !ctx->fcb( $1, ctx->functionArgs, $$ ); ctx->functionArgs.clear(); if( err ) { SETERROR( std::string( "Error calling function " ) + $1 ); YYERROR; }; }	
 	| terminal               { $$ = $1; }
 ;
 
